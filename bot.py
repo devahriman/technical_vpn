@@ -46,8 +46,8 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             results=[
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="دسترسی محدود",
-                    input_message_content=InputTextMessageContent("شما اجازه استفاده از این قابلیت را ندارید.")
+                    title="you aren`t admin",
+                    input_message_content=InputTextMessageContent("you aren`t use this bot")
                 )
             ],
             cache_time=0
@@ -56,15 +56,15 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     results = []
 
-    if query.startswith("ساخت کاربر"):
+    if query.startswith("user"):
         parts = query.split()
         if len(parts) != 5:
             results.append(
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="❌ ورودی ناقص",
-                    input_message_content=InputTextMessageContent("❌ فرمت صحیح:\nساخت کاربر [زمان] [اسم] [حجم]"),
-                    description="مثلاً: ساخت کاربر 30 testuser 10"
+                    title="input is wrong",
+                    input_message_content=InputTextMessageContent("time name data"),
+                    description="example : user 30 name 10"
                 )
             )
         else:
@@ -76,28 +76,28 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
                         id=str(uuid.uuid4()),
                         title=f"{name} - {data}GB",
                         input_message_content=InputTextMessageContent(msg(link)),
-                        description="ساخت موفق"
+                        description="okay"
                     )
                 )
             else:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title="❌ خطا در ساخت",
-                        input_message_content=InputTextMessageContent("ساخت کاربر با خطا مواجه شد."),
-                        description="مقادیر وارد شده را بررسی کن"
+                        title="error",
+                        input_message_content=InputTextMessageContent("error"),
+                        description="check input"
                     )
                 )
 
-    elif query.startswith("ساخت تست"):
+    elif query.startswith("test"):
         parts = query.split()
         if len(parts) != 3:
             results.append(
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="❌ فرمت نادرست",
-                    input_message_content=InputTextMessageContent("❌ فرمت صحیح:\nساخت تست [نام]"),
-                    description="مثلاً: ساخت تست ali"
+                    title="input is wrong",
+                    input_message_content=InputTextMessageContent("name"),
+                    description="example : test name"
                 )
             )
         else:
@@ -107,18 +107,18 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title=f"ساخت تست برای {name}",
+                        title=f"test for {name}",
                         input_message_content=InputTextMessageContent(msg(link)),
-                        description="اکانت تست ساخته شد"
+                        description="okay"
                     )
                 )
             else:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title="❌ خطا در ساخت تست",
-                        input_message_content=InputTextMessageContent("اکانت تست ساخته نشد."),
-                        description="مشکلی در ساخت تست وجود دارد"
+                        title="error",
+                        input_message_content=InputTextMessageContent("error"),
+                        description="error"
                     )
                 )
 
