@@ -1,3 +1,4 @@
+![alt](https://github.com/devahriman/technical_vpn/blob/main/technical_vpn.png)
 # TECHNICAL VPN
 a bot for marzneshin
 
