@@ -1,6 +1,7 @@
 # TECHNICAL VPN
 یک ربات برای مرزمشین
-[english README](https://github.com/devahriman/technical_vpn/README.md)
+
+do you want read[english README](https://github.com/devahriman/technical_vpn/blob/main/README.md)
 
 ## قابلیت ها
 - ساخت اکانت ساب خودکار
