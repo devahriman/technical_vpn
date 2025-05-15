@@ -16,16 +16,20 @@ do you want read [english README](https://github.com/devahriman/technical_vpn/bl
 ```bash
 git clone https://github.com/devahriman/technical_vpn.git && cd technical_vpn
 ```
-### 2. ویرایش فایل کانفیگ
+### 2. نصب ماژول پایتون
+```bash
+pip install -r requirements.txt
+```
+### 3. ویرایش فایل کانفیگ
 ویرایش آدرس،نام کاربری،رمز پنل ، ویرایش اطلاعات ربات و تنظیم تنظیمات
-### 3. اجرای فایل پنل توکن
+### 4. اجرای فایل پنل توکن
 ```bash
 python panel_token.py
 ```
 این فایل را اجرا کنید تا سرویس آیدی را دریافت کنید
-### 4. ویرایش دوباره فایل کانفیگ
+### 5. ویرایش دوباره فایل کانفیگ
 سرویس آیدی خود را در فایل وارد کنید
-### 5. فایل بات را اجرا کنید و تمام
+### 6. فایل بات را اجرا کنید و تمام
 ```
 python bot.py
 ```

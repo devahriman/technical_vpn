@@ -16,16 +16,20 @@ a bot for marzneshin
 ```bash
 git clone https://github.com/devahriman/technical_vpn.git && cd technical_vpn
 ```
-### 2. edit config.py file
+### 2. install python modules
+```bash
+pip install -r requirements.txt
+```
+### 3. edit config.py file
 edit panel url,user,pass , edit bot info and set settings 
-### 3. run panel_token.py
+### 4. run panel_token.py
 ```bash
 python panel_token.py
 ```
 run this file to get service id
-### 4. edit config.py file again 
+### 5. edit config.py file again 
 enter your service id in this file
-### 5. run bot.py and done
+### 6. run bot.py and done
 ```
 python bot.py
 ```
