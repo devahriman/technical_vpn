@@ -1,5 +1,6 @@
 # TECHNICAL VPN
 a bot for marzneshin
+[persian README](https://github.com/devahriman/technical_vpn/README_FA.md)
 
 ## feuters 
 - auto subscription generator
