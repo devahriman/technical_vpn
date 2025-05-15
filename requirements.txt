@@ -1,5 +1,3 @@
 python-telegram-bot
 uuid
-datatime
-time
 requests
