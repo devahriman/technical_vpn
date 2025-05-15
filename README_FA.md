@@ -12,7 +12,7 @@
 ## قدم به قدم
 ### 1. کلون کردن پروژه
 ```bash
-git clone https://github.com/devahriman/technical_vpn.git
+git clone https://github.com/devahriman/technical_vpn.git && cd technical_vpn
 ```
 ### 2. ویرایش فایل کانفیگ
 ویرایش آدرس،نام کاربری،رمز پنل ، ویرایش اطلاعات ربات و تنظیم تنظیمات

@@ -12,7 +12,7 @@ a bot for marzneshin
 ## step by step 
 ### 1. clone the project 
 ```bash
-git clone https://github.com/devahriman/technical_vpn.git
+git clone https://github.com/devahriman/technical_vpn.git && cd technical_vpn
 ```
 ### 2. edit config.py file
 edit panel url,user,pass , edit bot info and set settings 
