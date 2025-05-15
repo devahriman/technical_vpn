@@ -1,7 +1,7 @@
 # TECHNICAL VPN
 a bot for marzneshin
 
-میخای بخونی[persian README](https://github.com/devahriman/technical_vpn/blob/main/README_FA.md)
+میخای بخونی [نسخه فارسی رو](https://github.com/devahriman/technical_vpn/blob/main/README_FA.md)
 
 ## feuters 
 - auto subscription generator
