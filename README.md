@@ -35,3 +35,23 @@ enter your service id in this file
 python bot.py
 ```
 run it and enjoy!
+
+# how to use
+## crate user
+### in inline 
+```
+@id_your_bot crate day name data
+```
+### for example
+```
+@technical_vpn_bot create 30 ahriman 10
+```
+## create test
+### in inline
+```
+@id_your_bot test name
+```
+### for example
+```
+@technical_vpn_bot test ahriman
+```

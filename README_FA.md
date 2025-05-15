@@ -35,3 +35,23 @@ python panel_token.py
 python bot.py
 ```
 اجرا کنید و لذت ببرید
+
+# روش استفاده
+## ساخت کاربر
+### در اینلاین
+```
+@id_your_bot crate day name data
+```
+### برای مثال
+```
+@technical_vpn_bot create 30 ahriman 10
+```
+## ساخت تست
+### در اینلاین
+```
+@id_your_bot test name
+```
+### برای مثال
+```
+@technical_vpn_bot test ahriman
+```
