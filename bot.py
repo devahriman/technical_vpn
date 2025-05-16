@@ -5,34 +5,35 @@ import uuid
 import api_connect
 import config
 
-def adduser(tb_time, tb_data, tb_name):
+def add_user(duration_days, data_gb, username):
     try:
-        tb_time = int(tb_time)
-        tb_data = int(tb_data)
-        tb_name = str(tb_name)
-        result = api_connect.ahriman_add_user(tb_time, tb_data, tb_name)
+        duration_days = int(duration_days)
+        data_gb = int(data_gb)
+        username = str(username)
+        result = api_connect.ahriman_add_user(duration_days, data_gb, username)
         url = config.ahriman_url
         return url + result['subscription_url']
     except Exception as e:
         return None
 
-def msg(link):
-    msg_vpn = (
-        "✅ اکانت شما با موفقیت ساخته شد!\n\n"
-        "لینک اشتراک شما:\n"
-        f"{link}\n\n"
-        "برای استفاده:\n"
-        "1. لینک بالا را در مرورگر باز کرده یا در برنامه V2RAY وارد کنید.\n"
-        "2. نوع اتصال مورد نظر را انتخاب کرده و متصل شوید.\n\n"
-        "در صورت وجود هرگونه سوال یا مشکل، با پشتیبانی تکنیکال نت در تماس باشید.\n"
-        "با احترام - تیم تکنیکال نت"
+def generate_message(subscription_link):
+    message = (
+        "✅ Your VPN account has been successfully created!\n\n"
+        "Subscription Link:\n"
+        f"{subscription_link}\n\n"
+        "To use the VPN:\n"
+        "1. Open the link in your browser or import it in the V2Ray client.\n"
+        "2. Choose your preferred connection type and connect.\n\n"
+        "If you have any questions or issues, feel free to contact TechnicalNet support.\n"
+        "Best regards,\n"
+        "TechnicalNet Team"
     )
-    return msg_vpn
+    return message
 
 TOKEN = config.ahriman_token
 ADMINS = config.ahriman_admin
-test_time = config.ahriman_test_time
-test_data = config.ahriman_test_data
+TEST_DURATION = config.ahriman_test_time
+TEST_DATA = config.ahriman_test_data
 
 async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.inline_query.from_user.id
@@ -46,8 +47,8 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
             results=[
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="you aren`t admin",
-                    input_message_content=InputTextMessageContent("you aren`t use this bot")
+                    title="Access Denied",
+                    input_message_content=InputTextMessageContent("You are not authorized to use this bot.")
                 )
             ],
             cache_time=0
@@ -58,67 +59,67 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 
     if query.startswith("user"):
         parts = query.split()
-        if len(parts) != 5:
+        if len(parts) != 4:
             results.append(
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="input is wrong",
-                    input_message_content=InputTextMessageContent("time name data"),
-                    description="example : user 30 name 10"
+                    title="Invalid Input Format",
+                    input_message_content=InputTextMessageContent("Correct format: user <days> <username> <data_GB>"),
+                    description="Example: user 30 john 10"
                 )
             )
         else:
-            time, name, data = parts[2], parts[3], parts[4]
-            link = adduser(time, data, name)
+            _, days, username, data = parts
+            link = add_user(days, data, username)
             if link:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title=f"{name} - {data}GB",
-                        input_message_content=InputTextMessageContent(msg(link)),
-                        description="okay"
+                        title=f"{username} - {data} GB",
+                        input_message_content=InputTextMessageContent(generate_message(link)),
+                        description="Account created successfully"
                     )
                 )
             else:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title="error",
-                        input_message_content=InputTextMessageContent("error"),
-                        description="check input"
+                        title="Error",
+                        input_message_content=InputTextMessageContent("An error occurred while creating the account."),
+                        description="Check the input values."
                     )
                 )
 
     elif query.startswith("test"):
         parts = query.split()
-        if len(parts) != 3:
+        if len(parts) != 2:
             results.append(
                 InlineQueryResultArticle(
                     id=str(uuid.uuid4()),
-                    title="input is wrong",
-                    input_message_content=InputTextMessageContent("name"),
-                    description="example : test name"
+                    title="Invalid Input Format",
+                    input_message_content=InputTextMessageContent("Correct format: test <username>"),
+                    description="Example: test john"
                 )
             )
         else:
-            name = parts[2]
-            link = adduser(test_time, test_data, name)
+            _, username = parts
+            link = add_user(TEST_DURATION, TEST_DATA, username)
             if link:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title=f"test for {name}",
-                        input_message_content=InputTextMessageContent(msg(link)),
-                        description="okay"
+                        title=f"Test Account for {username}",
+                        input_message_content=InputTextMessageContent(generate_message(link)),
+                        description="Test account created"
                     )
                 )
             else:
                 results.append(
                     InlineQueryResultArticle(
                         id=str(uuid.uuid4()),
-                        title="error",
-                        input_message_content=InputTextMessageContent("error"),
-                        description="error"
+                        title="Error",
+                        input_message_content=InputTextMessageContent("An error occurred while creating the test account."),
+                        description="Please try again later."
                     )
                 )
 
@@ -128,5 +129,5 @@ async def inline_query_handler(update: Update, context: ContextTypes.DEFAULT_TYP
 app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(InlineQueryHandler(inline_query_handler))
 
-print("bot is runned.")
+print("Bot is running...")
 app.run_polling()
