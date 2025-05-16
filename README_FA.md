@@ -40,11 +40,11 @@ python bot.py
 ## ساخت کاربر
 ### در اینلاین
 ```
-@id_your_bot crate day name data
+@id_your_bot user day name data
 ```
 ### برای مثال
 ```
-@technical_vpn_bot create 30 ahriman 10
+@technical_vpn_bot user 30 ahriman 10
 ```
 ## ساخت تست
 ### در اینلاین

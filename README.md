@@ -40,11 +40,11 @@ run it and enjoy!
 ## crate user
 ### in inline 
 ```
-@id_your_bot crate day name data
+@id_your_bot user day name data
 ```
 ### for example
 ```
-@technical_vpn_bot create 30 ahriman 10
+@technical_vpn_bot user 30 ahriman 10
 ```
 ## create test
 ### in inline
