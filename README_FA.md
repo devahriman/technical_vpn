@@ -55,3 +55,7 @@ python bot.py
 ```
 @technical_vpn_bot test ahriman
 ```
+
+### فضای مجازی
+
+[تلگرام](https://t.me/devahriman)

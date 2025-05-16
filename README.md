@@ -55,3 +55,7 @@ run it and enjoy!
 ```
 @technical_vpn_bot test ahriman
 ```
+
+### social media
+
+[telegram](https://t.me/devahriman)
